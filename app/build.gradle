@@ -1,7 +1,7 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -27,6 +27,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
 }
 
 dependencies {
@@ -42,4 +46,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
+    implementation project(':libnavannotation') //注解库
+    kapt project(":libnavcompiler") //注解处理器
 }

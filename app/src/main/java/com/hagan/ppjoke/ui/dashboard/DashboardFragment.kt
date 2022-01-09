@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.hagan.libnavannotation.FragmentDestination
 import com.hagan.ppjoke.R
-
+@FragmentDestination(pageUrl = "main/tabs/dashboard", asStarter = false)
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel

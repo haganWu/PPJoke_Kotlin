@@ -1,0 +1,21 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':libnavannotation')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.google.code.gson:gson:2.8.6'
+//    implementation 'com.alibaba:fastjson:1.2.59'
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+}
