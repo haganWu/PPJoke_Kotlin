@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.hagan.libcommon.utils.L
 import com.hagan.libnavannotation.FragmentDestination
 import com.hagan.ppjoke.R
 
@@ -21,6 +22,7 @@ class SofaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        L.e("SofaFragment -> onCreateView()")
         notificationsViewModel =
             ViewModelProvider(this).get(SofaViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_notifications, container, false)
