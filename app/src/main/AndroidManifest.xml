@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.publish.PublishFragment" />
+        <activity android:name=".ui.publish.PublishActivity" />
     </application>
 
 </manifest>
