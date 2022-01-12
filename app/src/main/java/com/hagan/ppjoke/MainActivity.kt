@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.gson.JsonObject
+import com.hagan.libnetwork.GetRequest
 import com.hagan.ppjoke.ui.view.AppBottomBar
 import com.hagan.ppjoke.utils.NavGraphBuilder
 
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 
         //AppBottomBar的点击事件 和 navController 关联起来
         bottomBar.setOnNavigationItemSelectedListener(this::onNavItemSelected)
+
+        GetRequest<JsonObject>("").execute()
+
+
 
     }
 

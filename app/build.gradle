@@ -45,5 +45,5 @@ dependencies {
 
     implementation project(':libnavannotation') //注解库
     kapt project(":libnavcompiler") //注解处理器
-    implementation project(':libcommon')
+    implementation project(path: ':libnetwork')
 }
