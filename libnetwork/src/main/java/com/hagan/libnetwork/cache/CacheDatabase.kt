@@ -22,6 +22,16 @@ abstract class CacheDatabase : RoomDatabase() {
 
     companion object {
 
+        /**
+         * 数据库迁移对象，可以对数据库进行必要的更改
+         */
+        private val sMigration = object : Migration(1, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("alter table teacher rename to student")
+                database.execSQL("alter table teacher add column teacher_age INTEGER NOT NULL default 0 ")
+            }
+        }
+
         //创建一个内存数据库，这种数据库只存在于内存中，进程被杀后，数据随之丢失
 //            Room.inMemoryDatabaseBuilder()
         private val database = Room.databaseBuilder(
@@ -43,7 +53,7 @@ abstract class CacheDatabase : RoomDatabase() {
 //                .fallbackToDestructiveMigrationFrom()
             //向数据库添加迁移，每次迁移都要有开始和最后版本，Room 将将迁移到最新版本
             //如果没有迁移对象，则数据库会重新创建
-//                .addMigrations(CacheDatabase.sMigration)
+            .addMigrations(sMigration)
             .build()
 
 
@@ -51,15 +61,6 @@ abstract class CacheDatabase : RoomDatabase() {
             return database
         }
 
-        /**
-         * 数据库迁移对象，可以对数据库进行必要的更改
-         */
-        private val sMigration = object : Migration(1, 3) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("alter table teacher rename to student")
-                database.execSQL("alter table teacher add column teacher_age INTEGER NOT NULL default 0 ")
-            }
-        }
     }
 
     abstract fun getCache(): CacheDao

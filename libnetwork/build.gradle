@@ -13,6 +13,13 @@ android {
         versionName "1.0"
 
         consumerProguardFiles "consumer-rules.pro"
+
+        // Room 数据库生成的文件保存在哪个位置上面：当前 module 下 schemas文件中
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -28,11 +35,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
 }
 
 dependencies {
 
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    api project(':libcommon')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //数据库组件
+    implementation "android.arch.persistence.room:runtime:2.2.3"
+    implementation "androidx.room:room-ktx:2.2.5"
+    kapt "android.arch.persistence.room:compiler:2.2.3"
+
+    implementation project(path: ':libcommon')
+    kapt 'androidx.room:room-compiler:2.2.5'
 
 }

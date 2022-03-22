@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+
 android {
     compileSdkVersion 29
 
@@ -45,9 +46,4 @@ dependencies {
     api "androidx.lifecycle:lifecycle-extensions:2.2.0"
     //noinspection LifecycleAnnotationProcessorWithJava8
     kapt("android.arch.lifecycle:compiler:1.1.1")
-    //数据库组件
-    api "android.arch.persistence.room:runtime:2.2.3"
-    api "androidx.room:room-ktx:2.2.5"
-    kapt("android.arch.persistence.room:compiler:2.2.3")
-    kapt("androidx.room:room-compiler:2.2.5")
 }
